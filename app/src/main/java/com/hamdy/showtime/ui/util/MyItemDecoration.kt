@@ -20,7 +20,6 @@ class MyItemDecoration( var myContext : Context) : ItemDecoration() {
 
         if (itemPosition == 1) {
             outRect.top = myContext.resources.getDimensionPixelSize(R.dimen._100sdp)
-
         }
     }
 }

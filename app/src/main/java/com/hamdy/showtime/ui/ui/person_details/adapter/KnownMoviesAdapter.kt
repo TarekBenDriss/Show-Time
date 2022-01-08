@@ -15,7 +15,9 @@ import com.hamdy.showtime.R
 import com.hamdy.showtime.databinding.MoviesItemBinding
 import com.hamdy.showtime.databinding.MoviesSmallItemBinding
 import com.hamdy.showtime.ui.model.SearchKnownForItem
+import com.hamdy.showtime.ui.util.ID_KEY
 import com.hamdy.showtime.ui.util.ImageUrlBase
+import com.hamdy.showtime.ui.util.POSTER_PATH_KEY
 import kotlin.random.Random
 
 
@@ -50,8 +52,8 @@ class KnownMoviesAdapter : RecyclerView.Adapter<KnownMoviesAdapter.Holder>() {
 //                .addSharedElement(holder.movieImage, ViewCompat.getTransitionName(holder.movieImage)!!)
 //                .addSharedElement(holder.moviesName, ViewCompat.getTransitionName(holder.moviesName)!!)
 //                .build()
-            val bundle = bundleOf("posterPath" to movie?.posterPath)
-            bundle.putInt("id", movie?.id!!)
+            val bundle = bundleOf(POSTER_PATH_KEY to movie?.posterPath)
+            bundle.putInt(ID_KEY, movie?.id!!)
 //            bundle.putInt("position", position)
 //            bundle.putString("type", type)
             it.findNavController()

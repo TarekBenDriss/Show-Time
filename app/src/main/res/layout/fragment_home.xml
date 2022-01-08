@@ -14,92 +14,26 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-        <TextView
-            android:id="@+id/textView5"
-            android:layout_width="wrap_content"
-            android:layout_height="0dp"
-            android:layout_marginTop="@dimen/_8sdp"
-            android:text="Upcoming"
-            android:textColor="@color/white"
-            android:textSize="@dimen/title_category_text_size"
-            app:layout_constraintStart_toStartOf="@+id/textView"
-            app:layout_constraintTop_toBottomOf="@+id/hightRateRecyclerView" />
-
-        <TextView
-            android:id="@+id/seeAllUpComing"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/see_all"
-            android:textColor="@color/colorAccent"
-            android:textSize="@dimen/show_all_text_size"
-            app:layout_constraintEnd_toEndOf="@+id/seeAllTopRated"
-            app:layout_constraintTop_toTopOf="@+id/textView5" />
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/upcomingRecyclerView"
-            android:layout_width="0dp"
-            android:layout_height="@dimen/recycle_view_movies_height"
-            android:layout_marginTop="8dp"
-            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-            android:orientation="horizontal"
-            tools:listitem="@layout/movies_item"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="@+id/popularRecyclerView"
-            app:layout_constraintTop_toBottomOf="@+id/textView5" />
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/hightRateRecyclerView"
-            android:layout_width="0dp"
-            android:layout_height="@dimen/recycle_view_movies_height"
-            android:layout_marginTop="8dp"
-            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-            android:orientation="horizontal"
-            tools:listitem="@layout/movies_item"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="@+id/popularRecyclerView"
-            app:layout_constraintTop_toBottomOf="@+id/textView3" />
-
-        <TextView
-            android:id="@+id/textView3"
-            android:layout_width="wrap_content"
-            android:layout_height="0dp"
-            android:layout_marginTop="@dimen/_8sdp"
-            android:text="High Rate"
-            android:textColor="@color/white"
-            android:textSize="@dimen/title_category_text_size"
-            app:layout_constraintStart_toStartOf="@+id/textView"
-            app:layout_constraintTop_toBottomOf="@+id/popularRecyclerView" />
-
-        <TextView
-            android:id="@+id/seeAllTopRated"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/see_all"
-            android:textColor="@color/colorAccent"
-            android:textSize="@dimen/show_all_text_size"
-            app:layout_constraintEnd_toEndOf="@+id/seeAllPopular"
-            app:layout_constraintTop_toTopOf="@+id/textView3" />
-
         <com.jackandphantom.carouselrecyclerview.CarouselRecyclerview
             android:id="@+id/trendingRecyclerview"
             android:layout_width="match_parent"
             android:layout_height="@dimen/_220sdp"
-            tools:listitem="@layout/item_trending"
-            android:layout_marginTop="@dimen/_16sdp"
+            android:layout_marginTop="16dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            tools:listitem="@layout/item_trending" />
+
 
         <TextView
-            android:id="@+id/textView"
+            android:id="@+id/popularLabel"
             android:layout_width="wrap_content"
             android:layout_height="0dp"
             android:layout_marginStart="@dimen/_16sdp"
             android:layout_marginLeft="@dimen/_16sdp"
             android:layout_marginTop="@dimen/_8sdp"
-            android:text="Popular"
+            android:text="@string/popular"
             android:textColor="@color/white"
             android:textSize="@dimen/title_category_text_size"
             app:layout_constraintStart_toStartOf="parent"
@@ -114,19 +48,87 @@
             android:textColor="@color/colorAccent"
             android:textSize="@dimen/show_all_text_size"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/textView" />
+            app:layout_constraintTop_toTopOf="@+id/popularLabel" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/popularRecyclerView"
             android:layout_width="0dp"
             android:layout_height="@dimen/recycle_view_movies_height"
             android:layout_marginTop="8dp"
-            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             android:orientation="horizontal"
-            tools:listitem="@layout/movies_item"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="1.0"
-            app:layout_constraintStart_toStartOf="@+id/textView"
-            app:layout_constraintTop_toBottomOf="@+id/seeAllPopular" />
+            app:layout_constraintStart_toStartOf="@+id/popularLabel"
+            app:layout_constraintTop_toBottomOf="@+id/seeAllPopular"
+            tools:listitem="@layout/movies_item" />
+
+        <TextView
+            android:id="@+id/highRatedLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_marginTop="@dimen/_8sdp"
+            android:text="@string/high_rate"
+            android:textColor="@color/white"
+            android:textSize="@dimen/title_category_text_size"
+            app:layout_constraintStart_toStartOf="@+id/popularLabel"
+            app:layout_constraintTop_toBottomOf="@+id/popularRecyclerView" />
+
+        <TextView
+            android:id="@+id/seeAllTopRated"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/see_all"
+            android:textColor="@color/colorAccent"
+            android:textSize="@dimen/show_all_text_size"
+            app:layout_constraintEnd_toEndOf="@+id/seeAllPopular"
+            app:layout_constraintTop_toTopOf="@+id/highRatedLabel" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/hightRateRecyclerView"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/recycle_view_movies_height"
+            android:layout_marginTop="8dp"
+            android:orientation="horizontal"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/popularRecyclerView"
+            app:layout_constraintTop_toBottomOf="@+id/highRatedLabel"
+            tools:listitem="@layout/movies_item" />
+
+        <TextView
+            android:id="@+id/upcomingLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_marginTop="@dimen/_8sdp"
+            android:text="@string/upcoming"
+            android:textColor="@color/white"
+            android:textSize="@dimen/title_category_text_size"
+            app:layout_constraintStart_toStartOf="@+id/popularLabel"
+            app:layout_constraintTop_toBottomOf="@+id/hightRateRecyclerView" />
+
+        <TextView
+            android:id="@+id/seeAllUpComing"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/see_all"
+            android:textColor="@color/colorAccent"
+            android:textSize="@dimen/show_all_text_size"
+            app:layout_constraintEnd_toEndOf="@+id/seeAllTopRated"
+            app:layout_constraintTop_toTopOf="@+id/upcomingLabel" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/upcomingRecyclerView"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/recycle_view_movies_height"
+            android:layout_marginTop="8dp"
+            android:orientation="horizontal"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@+id/popularRecyclerView"
+            app:layout_constraintTop_toBottomOf="@+id/upcomingLabel"
+            tools:listitem="@layout/movies_item" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>

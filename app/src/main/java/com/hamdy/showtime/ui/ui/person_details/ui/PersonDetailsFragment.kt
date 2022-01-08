@@ -24,7 +24,7 @@ import com.hamdy.showtime.R
 import com.hamdy.showtime.databinding.PersonDetailsFragmentBinding
 import com.hamdy.showtime.ui.ui.person_details.adapter.KnownMoviesAdapter
 import com.hamdy.showtime.ui.ui.person_details.adapter.PersonPhotosAdapter
-import com.hamdy.showtime.ui.util.ImageUrlBase
+import com.hamdy.showtime.ui.util.*
 import kotlin.math.abs
 
 
@@ -43,7 +43,7 @@ class PersonDetailsFragment : Fragment(), AppBarLayout.OnOffsetChangedListener {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         viewModel = ViewModelProvider(this)[PersonDetailsViewModel::class.java]
-        personId = arguments?.getInt("id")!!
+        personId = arguments?.getInt(ID_KEY)!!
         viewModel.getPersonDetails(personId)
         viewModel.getPersonImage(personId)
         viewModel.getFavorite(personId)
@@ -62,7 +62,7 @@ class PersonDetailsFragment : Fragment(), AppBarLayout.OnOffsetChangedListener {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         removeStatusBarTransparent()
-        val posterPath = arguments?.getString("posterPath")
+        val posterPath = arguments?.getString(POSTER_PATH_KEY)
         binding.appBarImage.load(ImageUrlBase + posterPath)
         binding.appBarImage.requestLayout()
         binding.viewDark.requestLayout()
@@ -74,8 +74,8 @@ class PersonDetailsFragment : Fragment(), AppBarLayout.OnOffsetChangedListener {
 
         binding.favoriteImage.setOnClickListener {
             val sharedPreferences: SharedPreferences =
-                context?.getSharedPreferences("ShowTimeAuth", Context.MODE_PRIVATE)!!
-            sharedIdValue = sharedPreferences.getBoolean("login", false)
+                context?.getSharedPreferences(SHARED_PREF_ID, Context.MODE_PRIVATE)!!
+            sharedIdValue = sharedPreferences.getBoolean(LOGIN_KEY, false)
             if (sharedIdValue) {
                 viewModel.setFavorite(personId, posterPath!!, favorite)
                 if (favorite)
@@ -84,7 +84,7 @@ class PersonDetailsFragment : Fragment(), AppBarLayout.OnOffsetChangedListener {
                     binding.favoriteImage.setImageResource(R.drawable.ic_favorite_choosed)
                 favorite = !favorite
                 it.findNavController().previousBackStackEntry?.savedStateHandle?.set(
-                    "favoriteBack",
+                    FAVORITE_BACK_KEY,
                     personId.toString() to favorite
                 )
             } else {
@@ -105,7 +105,7 @@ class PersonDetailsFragment : Fragment(), AppBarLayout.OnOffsetChangedListener {
             else
                 binding.favoriteImage.setImageResource(R.drawable.ic_favorite)
             findNavController().previousBackStackEntry?.savedStateHandle?.set(
-                "favoriteBack",
+                FAVORITE_BACK_KEY,
                 personId.toString() to it
             )
 

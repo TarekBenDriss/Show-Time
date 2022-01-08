@@ -6,6 +6,9 @@ import com.hamdy.showtime.ui.model.PersonsResponse
 import com.hamdy.showtime.ui.network.RetrofitClient
 import com.hamdy.showtime.ui.network.PersonsService
 import com.hamdy.showtime.ui.util.API_KEY
+import com.hamdy.showtime.ui.util.FAVORITE_ID_KEY
+import com.hamdy.showtime.ui.util.FAVORITE_PERSONS_KEY
+import com.hamdy.showtime.ui.util.USERS_KEY
 import kotlinx.coroutines.tasks.await
 
 class PersonsRepository {
@@ -21,12 +24,12 @@ class PersonsRepository {
 
     suspend fun getAllFavorite(): MutableMap<String, Boolean> {
         val collectionReference =
-            db.collection("Users").document(auth.currentUser?.uid.toString())
-                .collection("FavoritePersons")
+            db.collection(USERS_KEY).document(auth.currentUser?.uid.toString())
+                .collection(FAVORITE_PERSONS_KEY)
         val myMap: MutableMap<String, Boolean> = HashMap()
         val result = collectionReference.get().await()
         for (i in result)
-            myMap[i["favoriteId"].toString()] = true
+            myMap[i[FAVORITE_ID_KEY].toString()] = true
         return myMap
     }
 

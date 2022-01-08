@@ -17,6 +17,10 @@ import com.hamdy.showtime.R
 import com.hamdy.showtime.databinding.FragmentHomeBinding
 import com.hamdy.showtime.ui.ui.home.adapter.HomeCategoryMoviesAdapter
 import com.hamdy.showtime.ui.ui.home.adapter.TrendingAdapter
+import com.hamdy.showtime.ui.util.POPULAR_KEY
+import com.hamdy.showtime.ui.util.TOP_RATE_KEY
+import com.hamdy.showtime.ui.util.TYPE_KEY
+import com.hamdy.showtime.ui.util.UPCOMING_KEY
 
 
 class HomeFragment : Fragment(), View.OnClickListener {
@@ -94,10 +98,10 @@ class HomeFragment : Fragment(), View.OnClickListener {
     }
 
     override fun onClick(p0: View?) {
-        var bundle = bundleOf("type" to "upComing")
+        var bundle = bundleOf(TYPE_KEY to UPCOMING_KEY)
         when (p0?.id) {
-            R.id.seeAllPopular -> bundle = bundleOf("type" to "popular")
-            R.id.seeAllTopRated -> bundle = bundleOf("type" to "topRate")
+            R.id.seeAllPopular -> bundle = bundleOf(TYPE_KEY to POPULAR_KEY)
+            R.id.seeAllTopRated -> bundle = bundleOf(TYPE_KEY to TOP_RATE_KEY)
         }
         p0?.findNavController()
             ?.navigate(R.id.action_navigation_home_to_fragment_all_movies, bundle, null, null)

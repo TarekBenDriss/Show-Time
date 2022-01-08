@@ -1,6 +1,8 @@
 package com.hamdy.showtime.ui.ui.login.repository
 import android.util.Log
 import com.google.firebase.auth.FirebaseAuth
+import com.hamdy.showtime.ui.util.FAILED_RESPONSE_VALUE
+import com.hamdy.showtime.ui.util.SUCCESSFUL_RESPONSE_VALUE
 import kotlinx.coroutines.tasks.await
 
 class LoginRepository {
@@ -11,13 +13,13 @@ class LoginRepository {
             val result=FirebaseAuth.getInstance().signInWithEmailAndPassword(email,password).await()
             if(result.user !=null) {
                 Log.d(TAG, "login: if")
-                "Successful"
+                SUCCESSFUL_RESPONSE_VALUE
             }else{
                 Log.d(TAG, "login: else")
-                "Failed"
+                FAILED_RESPONSE_VALUE
             }
         }catch (e:Exception){
-            "Failed"
+            FAILED_RESPONSE_VALUE
         }
 
     }

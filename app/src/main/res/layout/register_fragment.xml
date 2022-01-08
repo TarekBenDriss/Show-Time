@@ -55,8 +55,7 @@
         android:drawableLeft="@drawable/user"
         android:drawablePadding="4dp"
         android:ems="10"
-        android:hint="User Name"
-        android:inputType="text"
+        android:hint="@string/username"
         android:textColor="@color/colorPrimary"
         android:textColorHint="@color/lightGray"
         app:layout_constraintEnd_toEndOf="parent"
@@ -73,7 +72,7 @@
         android:drawablePadding="4dp"
         android:layout_marginTop="@dimen/_22sdp"
         android:ems="10"
-        android:hint="Email"
+        android:hint="@string/email"
         android:inputType="textEmailAddress"
         android:textColor="@color/colorPrimary"
         android:textColorHint="@color/lightGray"
@@ -92,9 +91,8 @@
         android:drawableLeft="@drawable/password_icon"
         android:drawablePadding="4dp"
         android:layout_marginTop="@dimen/_22sdp"
-
         android:ems="10"
-        android:hint="Password"
+        android:hint="@string/password"
         android:inputType="textPassword"
         android:textColor="@color/colorPrimary"
         android:textColorHint="@color/lightGray"
@@ -104,10 +102,10 @@
         app:layout_constraintTop_toBottomOf="@+id/emailRegister" />
 
     <TextView
-        android:id="@+id/textView48"
+        android:id="@+id/forgetPasswordLabel"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:text="Forget password?"
+        android:text="@string/forget_password"
         android:textColor="@color/colorAccent"
         app:autoSizeTextType="uniform"
         app:layout_constraintDimensionRatio="15:1"
@@ -128,7 +126,7 @@
         android:layout_marginEnd="@dimen/_24sdp"
         android:layout_marginRight="@dimen/_24sdp"
         android:background="@drawable/btn_shape"
-        android:text="Sign Up"
+        android:text="@string/sign_up"
         android:textColor="@color/white"
         android:textSize="@dimen/_16ssp"
         app:layout_constraintBottom_toTopOf="@+id/guideline12"
@@ -137,7 +135,7 @@
         app:layout_constraintStart_toStartOf="parent" />
 
     <LinearLayout
-        android:id="@+id/linearLayout"
+        android:id="@+id/signInLinearLayout"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:gravity="center"
@@ -151,16 +149,16 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Don't have an account?"
+            android:text="@string/you_have_an_account"
             android:textColor="@color/colorPrimary"
             android:textSize="@dimen/_16ssp" />
 
         <TextView
-            android:id="@+id/Signin"
+            android:id="@+id/signinLabel"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="8dp"
-            android:text="Sign in"
+            android:text="@string/sign_in"
             android:textColor="@color/colorAccent"
             android:textSize="@dimen/_16ssp" />
     </LinearLayout>

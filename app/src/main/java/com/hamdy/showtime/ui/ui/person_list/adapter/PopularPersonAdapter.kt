@@ -13,7 +13,9 @@ import coil.load
 import com.hamdy.showtime.R
 import com.hamdy.showtime.databinding.PersonsItemBinding
 import com.hamdy.showtime.ui.model.PersonsResultsItem
+import com.hamdy.showtime.ui.util.ID_KEY
 import com.hamdy.showtime.ui.util.ImageUrlBase
+import com.hamdy.showtime.ui.util.POSTER_PATH_KEY
 import kotlin.random.Random
 
 
@@ -53,8 +55,8 @@ class PopularPersonAdapter : RecyclerView.Adapter<PopularPersonAdapter.Holder>()
 //                .addSharedElement(holder.moviesName, ViewCompat.getTransitionName(holder.moviesName)!!)
 //                .build()
             val bundle = Bundle()
-            bundle.putString("posterPath", person?.profilePath!!)
-            bundle.putInt("id", person.id!!)
+            bundle.putString(POSTER_PATH_KEY, person?.profilePath!!)
+            bundle.putInt(ID_KEY, person.id!!)
 //            bundle.putInt("position", position)
 //            bundle.putString("type", type)
             it.findNavController()

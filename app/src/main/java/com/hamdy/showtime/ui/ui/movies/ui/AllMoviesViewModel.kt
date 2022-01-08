@@ -6,6 +6,8 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.hamdy.showtime.ui.ui.movies.repository.AllMoviesRepository
 import com.hamdy.showtime.ui.model.PopularResultsItem
+import com.hamdy.showtime.ui.util.POPULAR_KEY
+import com.hamdy.showtime.ui.util.TOP_RATE_KEY
 import kotlinx.coroutines.*
 
 class AllMoviesViewModel : ViewModel() {
@@ -21,10 +23,10 @@ class AllMoviesViewModel : ViewModel() {
     fun myStart(type: String, dialog: Dialog) {
         this.dialog = dialog
         when (type) {
-            "popular" -> {
+            POPULAR_KEY -> {
                 getPopular()
             }
-            "topRate" -> {
+            TOP_RATE_KEY -> {
                 getTopRated()
             }
             else -> {

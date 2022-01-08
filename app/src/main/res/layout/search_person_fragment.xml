@@ -40,4 +40,5 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:listitem="@layout/favorite_item" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

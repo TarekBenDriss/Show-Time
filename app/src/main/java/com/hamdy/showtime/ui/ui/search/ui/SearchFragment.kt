@@ -22,9 +22,8 @@ import com.hamdy.showtime.databinding.SearchFragmentBinding
 import com.hamdy.showtime.ui.ui.search.adapter.SearchViewPagerAdapter
 import com.hamdy.showtime.ui.ui.search.fragment.movie_search.ui.SearchMoviesFragment
 import com.hamdy.showtime.ui.ui.search.fragment.movie_search.ui.SearchMoviesViewModel
-
-
-
+import com.hamdy.showtime.ui.util.MOVIES_KEY
+import com.hamdy.showtime.ui.util.PERSONS_KEY
 
 
 class SearchFragment : Fragment() {
@@ -51,7 +50,7 @@ class SearchFragment : Fragment() {
         val adapter = SearchViewPagerAdapter(childFragmentManager, lifecycle)
         viewPager2.adapter = adapter
         val tabLayout = binding.tabLayout
-        val names = arrayOf("Movies", "Persons")
+        val names = arrayOf(MOVIES_KEY, PERSONS_KEY)
         TabLayoutMediator(tabLayout, viewPager2) { tab, position ->
             tab.text = names[position]
         }.attach()
@@ -106,14 +105,8 @@ class SearchFragment : Fragment() {
         }
     }
 
-    override fun onPause() {
-        super.onPause()
-        Log.d(TAG, "onPause: ")
-    }
     override fun onStop() {
         super.onStop()
-        Log.d(TAG, "onStop: ")
-
         addStatusBarTransparent()
     }
 }

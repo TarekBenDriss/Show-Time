@@ -12,7 +12,9 @@ import coil.load
 import com.hamdy.showtime.R
 import com.hamdy.showtime.databinding.FavoriteItemBinding
 import com.hamdy.showtime.ui.ui.favorite.model.FavoriteItem
+import com.hamdy.showtime.ui.util.ID_KEY
 import com.hamdy.showtime.ui.util.ImageUrlBase
+import com.hamdy.showtime.ui.util.POSTER_PATH_KEY
 
 class FavoriteAdapter : RecyclerView.Adapter<FavoriteAdapter.Holder>() {
     private var favorites: List<FavoriteItem>? = null
@@ -45,8 +47,8 @@ class FavoriteAdapter : RecyclerView.Adapter<FavoriteAdapter.Holder>() {
 //                .addSharedElement(holder.moviesName, ViewCompat.getTransitionName(holder.moviesName)!!)
 //                .build()
             val bundle = Bundle()
-            bundle.putString("posterPath", favorite?.poster!!)
-            bundle.putInt("id", favorite.favoriteId.toInt())
+            bundle.putString(POSTER_PATH_KEY, favorite?.poster!!)
+            bundle.putInt(ID_KEY, favorite.favoriteId.toInt())
 //            bundle.putInt("position", position)
 //            bundle.putString("type", type)
             it.findNavController().navigate(action!!, bundle, null, null)

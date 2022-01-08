@@ -11,11 +11,13 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
-import androidx.lifecycle.Observer
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
 import com.hamdy.showtime.R
 import com.hamdy.showtime.databinding.RegisterFragmentBinding
+import com.hamdy.showtime.ui.util.LOGIN_KEY
+import com.hamdy.showtime.ui.util.SHARED_PREF_ID
+import com.hamdy.showtime.ui.util.SUCCESSFUL_RESPONSE_VALUE
 
 class RegisterFragment : Fragment() {
 
@@ -30,7 +32,7 @@ class RegisterFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         viewModel = ViewModelProvider(this).get(RegisterViewModel::class.java)
-        binding.Signin.setOnClickListener {
+        binding.signinLabel.setOnClickListener {
             it.findNavController().navigate(R.id.action_registerFragment_to_loginFragment,null,null,null)
         }
 
@@ -52,11 +54,11 @@ class RegisterFragment : Fragment() {
         viewModel.responseLiveData.observe(viewLifecycleOwner, {
             Toast.makeText(context, it, Toast.LENGTH_SHORT).show()
             dialog.cancel()
-            if(it == "Successful"){
+            if(it == SUCCESSFUL_RESPONSE_VALUE){
                 val sharedPreferences: SharedPreferences =
-                    context?.getSharedPreferences("ShowTimeAuth", Context.MODE_PRIVATE)!!
+                    context?.getSharedPreferences(SHARED_PREF_ID, Context.MODE_PRIVATE)!!
                 val editor: SharedPreferences.Editor =  sharedPreferences.edit()
-                editor.putBoolean("login",true)
+                editor.putBoolean(LOGIN_KEY,true)
                 editor.apply()
                 editor.commit()
                 findNavController().popBackStack()
@@ -70,19 +72,19 @@ class RegisterFragment : Fragment() {
         val password =binding.passwordRegister
         if (name.isEmpty()) {
             valid = false
-            userName.error = "User name can't be empty"
+            userName.error = getString(R.string.signup_username_error)
         } else {
             userName.error = null
         }
         if (mail.isEmpty() && Patterns.EMAIL_ADDRESS.matcher(mail).matches()) {
             valid = false
-            email.error = "Email can't be empty"
+            email.error = getString(R.string.signup_email_error)
         } else {
             email.error = null
         }
         if (pass.isEmpty()) {
             valid = false
-            password.error = "Password can't be empty"
+            password.error = getString(R.string.signup_password_error)
         } else {
             password.error = null
         }

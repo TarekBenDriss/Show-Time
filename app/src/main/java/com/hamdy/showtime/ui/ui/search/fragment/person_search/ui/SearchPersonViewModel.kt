@@ -4,8 +4,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.hamdy.showtime.ui.model.ResultsItem
-import com.hamdy.showtime.ui.model.SearchResultsItem
-import com.hamdy.showtime.ui.ui.search.fragment.movie_search.repository.SearchPersonRepository
+import com.hamdy.showtime.ui.ui.search.fragment.person_search.repository.SearchPersonRepository
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext

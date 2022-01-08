@@ -32,5 +32,4 @@ class HomeRepository {
         return client.body()?.results
     }
 
-
 }

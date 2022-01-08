@@ -18,6 +18,9 @@ import com.hamdy.showtime.databinding.FragmentAllMoviesBinding
 import com.hamdy.showtime.ui.ui.home.adapter.HomeCategoryMoviesAdapter
 import com.hamdy.showtime.ui.ui.movies.adapter.SeeAllMoviesAdapter
 import com.hamdy.showtime.ui.util.MyItemDecoration
+import com.hamdy.showtime.ui.util.POPULAR_KEY
+import com.hamdy.showtime.ui.util.TOP_RATE_KEY
+import com.hamdy.showtime.ui.util.TYPE_KEY
 
 class AllMoviesFragment : Fragment() {
     private val TAG = "AllMoviesFragment"
@@ -39,7 +42,7 @@ class AllMoviesFragment : Fragment() {
         super.onCreate(savedInstanceState)
         allMoviesViewModel =
             ViewModelProvider(this)[AllMoviesViewModel::class.java]
-        type = arguments?.get("type").toString()
+        type = arguments?.get(TYPE_KEY).toString()
         allMoviesViewModel.myStart(type, createDialog())
 
     }
@@ -67,10 +70,10 @@ class AllMoviesFragment : Fragment() {
                 if (!recyclerView.canScrollVertically(1)) { //1 for down
                     if (canGetPopular) {
                         when (type) {
-                            "popular" -> {
+                            POPULAR_KEY -> {
                                 allMoviesViewModel.getPopular()
                             }
-                            "topRate" -> {
+                            TOP_RATE_KEY -> {
                                 allMoviesViewModel.getTopRated()
                             }
                             else -> {

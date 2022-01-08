@@ -9,7 +9,7 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:background="@color/colorPrimary">
 
         <com.flaviofaria.kenburnsview.KenBurnsView
@@ -41,9 +41,7 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                tools:srcCompat="@drawable/test">
-
-            </ImageView>
+                tools:srcCompat="@drawable/test"/>
 
             <TextView
                 android:id="@+id/movieName"
@@ -83,8 +81,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="@dimen/_8sdp"
-                android:drawableStart="@drawable/ic_star"
-                android:drawableLeft="@drawable/ic_star"
+                app:drawableStartCompat="@drawable/ic_star"
                 android:drawablePadding="@dimen/_4sdp"
                 android:gravity="center"
                 android:textColor="@color/starColor"
@@ -107,13 +104,13 @@
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <TextView
-            android:id="@+id/textView8"
+            android:id="@+id/storyLineLabel"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/_8sdp"
             android:layout_marginLeft="@dimen/_8sdp"
             android:layout_marginTop="@dimen/_8sdp"
-            android:text="Story Line"
+            android:text="@string/story_line"
             android:textColor="@color/white"
             android:textSize="@dimen/_14sdp"
             app:layout_constraintStart_toStartOf="parent"
@@ -127,19 +124,19 @@
             android:maxLines="3"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="@+id/textView8"
-            app:layout_constraintTop_toBottomOf="@+id/textView8"
+            app:layout_constraintStart_toStartOf="@+id/storyLineLabel"
+            app:layout_constraintTop_toBottomOf="@+id/storyLineLabel"
             tools:text="A professional thief with $40 million in debt and his family's life on the line must commit one final heist - rob a futuristic airborne casino filled with the world's most dangerous criminals." />
 
         <TextView
-            android:id="@+id/textView10"
+            android:id="@+id/castListLabel"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/_8sdp"
-            android:text="Cast List"
+            android:text="@string/cast_list"
             android:textColor="@color/white"
             android:textSize="@dimen/_14sdp"
-            app:layout_constraintStart_toStartOf="@+id/textView8"
+            app:layout_constraintStart_toStartOf="@+id/storyLineLabel"
             app:layout_constraintTop_toBottomOf="@+id/overviewText" />
 
         <androidx.recyclerview.widget.RecyclerView
@@ -147,8 +144,8 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="@+id/textView10"
-            app:layout_constraintTop_toBottomOf="@+id/textView10" />
+            app:layout_constraintStart_toStartOf="@+id/castListLabel"
+            app:layout_constraintTop_toBottomOf="@+id/castListLabel" />
 
         <ImageView
             android:id="@+id/playButton"

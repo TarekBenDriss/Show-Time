@@ -81,7 +81,7 @@ class SearchPersonFragment : Fragment() {
             if (it.second == 1 && firstOpen) {
                 val query = it.first
                 if (query.isEmpty())
-                    parent?.searchText?.error = "Query can't be empty"
+                    parent?.searchText?.error = getString(R.string.search_querry_empty)
                 else {
                     createDialog()
                     Log.d("lol", "aha: $query")

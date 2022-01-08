@@ -12,7 +12,9 @@ import coil.transform.CircleCropTransformation
 import com.hamdy.showtime.R
 import com.hamdy.showtime.databinding.ItemTrendingBinding
 import com.hamdy.showtime.ui.model.PopularResultsItem
+import com.hamdy.showtime.ui.util.ID_KEY
 import com.hamdy.showtime.ui.util.ImageUrlBase
+import com.hamdy.showtime.ui.util.POSTER_PATH_KEY
 
 
 class TrendingAdapter : RecyclerView.Adapter<TrendingAdapter.Holder>() {
@@ -34,8 +36,8 @@ class TrendingAdapter : RecyclerView.Adapter<TrendingAdapter.Holder>() {
 //            crossfade(1000)
 //        }
         holder.imageMovieTrend.setOnClickListener {
-            val bundle = bundleOf("posterPath" to movie?.posterPath)
-            bundle.putInt("id", movie?.id!!)
+            val bundle = bundleOf(POSTER_PATH_KEY to movie?.posterPath)
+            bundle.putInt(ID_KEY, movie?.id!!)
             it.findNavController().navigate(R.id.action_navigation_home_to_moviesDetails, bundle, null, null)
         }
     }

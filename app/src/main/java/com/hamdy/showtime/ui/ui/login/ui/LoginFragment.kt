@@ -17,6 +17,9 @@ import androidx.navigation.fragment.findNavController
 import com.google.firebase.auth.FirebaseAuth
 import com.hamdy.showtime.R
 import com.hamdy.showtime.databinding.LoginFragmentBinding
+import com.hamdy.showtime.ui.util.LOGIN_KEY
+import com.hamdy.showtime.ui.util.SHARED_PREF_ID
+import com.hamdy.showtime.ui.util.SUCCESSFUL_RESPONSE_VALUE
 
 class LoginFragment : Fragment() {
 
@@ -50,11 +53,11 @@ class LoginFragment : Fragment() {
         viewModel.responseLiveData.observe(viewLifecycleOwner, {
             Toast.makeText(context, it, Toast.LENGTH_SHORT).show()
             dialog.cancel()
-            if(it == "Successful"){
+            if(it == SUCCESSFUL_RESPONSE_VALUE){
                 val sharedPreferences: SharedPreferences =
-                    context?.getSharedPreferences("ShowTimeAuth",Context.MODE_PRIVATE)!!
+                    context?.getSharedPreferences(SHARED_PREF_ID,Context.MODE_PRIVATE)!!
                 val editor:SharedPreferences.Editor =  sharedPreferences.edit()
-                editor.putBoolean("login",true)
+                editor.putBoolean(LOGIN_KEY,true)
                 editor.apply()
                 editor.commit()
                 findNavController().popBackStack()
@@ -83,13 +86,13 @@ class LoginFragment : Fragment() {
         val password =binding.password
         if (mail.isEmpty() && Patterns.EMAIL_ADDRESS.matcher(mail).matches()) {
             valid = false
-            email.error = "Email can't be empty"
+            email.error = getString(R.string.signup_email_error)
         } else {
             email.error = null
         }
         if (pass.isEmpty()) {
             valid = false
-            password.error = "Password can't be empty"
+            password.error = getString(R.string.signup_password_error)
         } else {
             password.error = null
         }

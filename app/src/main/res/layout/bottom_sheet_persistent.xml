@@ -10,13 +10,13 @@
     android:paddingBottom="32dp">
 
     <TextView
-        android:id="@+id/textView2"
+        android:id="@+id/biographyLabel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/_16sdp"
         android:layout_marginLeft="@dimen/_16sdp"
         android:layout_marginTop="16dp"
-        android:text="Biography"
+        android:text="@string/biography"
         android:textColor="@color/black"
         android:textSize="@dimen/_20ssp"
         android:textStyle="bold"
@@ -36,8 +36,8 @@
         android:textSize="@dimen/_14ssp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/textView2"
-        app:layout_constraintTop_toBottomOf="@+id/textView2"
+        app:layout_constraintStart_toStartOf="@+id/biographyLabel"
+        app:layout_constraintTop_toBottomOf="@+id/biographyLabel"
         tools:text="Leonardo DiCaprio (born November 11, 1974) is an American actor, film producer, and environmental activist. He began his film career by starring as Josh in Critters 3 before starring in the film adaptation of the memoir This Boy's Life (1993) alongside Robert De Niro. DiCaprio was praised for his supporting role in the drama What's Eating Gilbert Grape (1993), and gained public recognition with leading roles in the drama The Basketball Diaries (1995) and the romantic drama Romeo + Juliet (1996), before achieving international fame with James Cameron's epic romance Titanic (1997) He has been nominated for six Academy Awards—five for acting and one for producing—and in 2016, he won the Academy Award for Best Actor for The Revenant. DiCaprio is the founder of his own production company, named Appian Way Productions. He is also a committed environmentalist." />
 
     <ImageView
@@ -54,11 +54,11 @@
         tools:ignore="VectorDrawableCompat" />
 
     <TextView
-        android:id="@+id/textView4"
+        android:id="@+id/bornLabel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/_16sdp"
-        android:text="Born"
+        android:text="@string/born"
         android:textColor="@color/black"
         android:textSize="@dimen/_20ssp"
         android:textStyle="bold"
@@ -72,8 +72,8 @@
         android:layout_marginTop="@dimen/_8sdp"
         android:textColor="@color/gray"
         android:textSize="@dimen/_14ssp"
-        app:layout_constraintStart_toStartOf="@+id/textView4"
-        app:layout_constraintTop_toBottomOf="@+id/textView4"
+        app:layout_constraintStart_toStartOf="@+id/bornLabel"
+        app:layout_constraintTop_toBottomOf="@+id/bornLabel"
         tools:text="1974-11-11" />
 
     <TextView
@@ -88,11 +88,11 @@
         tools:text="Los Angeles, California, USA" />
 
     <TextView
-        android:id="@+id/textView9"
+        android:id="@+id/photosLabel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/_16sdp"
-        android:text="Photos"
+        android:text="@string/photos"
         android:textColor="@color/black"
         android:textSize="@dimen/_20ssp"
         android:textStyle="bold"
@@ -109,9 +109,9 @@
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/textView9"
-        app:layout_constraintTop_toBottomOf="@+id/textView9"
+        app:layout_constraintStart_toStartOf="@+id/photosLabel"
+        app:layout_constraintTop_toBottomOf="@+id/photosLabel"
         tools:itemCount="5"
-        tools:listitem="persons_item" />
+        tools:listitem="@layout/persons_item" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

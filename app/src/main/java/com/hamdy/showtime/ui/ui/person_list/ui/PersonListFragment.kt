@@ -17,6 +17,7 @@ import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.hamdy.showtime.R
 import com.hamdy.showtime.databinding.PersonListFragmentBinding
 import com.hamdy.showtime.ui.ui.person_list.adapter.PopularPersonAdapter
+import com.hamdy.showtime.ui.util.FAVORITE_BACK_KEY
 import com.hamdy.showtime.ui.util.MyItemDecoration
 
 
@@ -62,7 +63,7 @@ class PersonListFragment : Fragment() {
         }
 
         findNavController().currentBackStackEntry?.savedStateHandle?.getLiveData<Pair<String, Boolean>>(
-            "favoriteBack"
+            FAVORITE_BACK_KEY
         )?.observe(
             viewLifecycleOwner
         ) {

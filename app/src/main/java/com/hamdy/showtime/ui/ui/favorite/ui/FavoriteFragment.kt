@@ -6,6 +6,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearSnapHelper
@@ -37,14 +38,14 @@ class FavoriteFragment : Fragment() {
         viewPager2.adapter = adapter
         binding.moviesCategory.setOnClickListener {
             viewPager2.currentItem = 0
-            binding.moviesCategory.setTextColor(Color.parseColor("#D81F26"))
-            binding.personCategory.setTextColor(Color.parseColor("#FFFFFF"))
+            binding.moviesCategory.setTextColor(ContextCompat.getColor(requireContext(),R.color.categoryRed))
+            binding.personCategory.setTextColor(ContextCompat.getColor(requireContext(),R.color.categoryWhite))
 
         }
         binding.personCategory.setOnClickListener {
             viewPager2.currentItem = 1
-            binding.personCategory.setTextColor(Color.parseColor("#D81F26"))
-            binding.moviesCategory.setTextColor(Color.parseColor("#FFFFFF"))
+            binding.personCategory.setTextColor(ContextCompat.getColor(requireContext(),R.color.categoryRed))
+            binding.moviesCategory.setTextColor(ContextCompat.getColor(requireContext(),R.color.categoryWhite))
 
         }
     }

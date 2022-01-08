@@ -1,6 +1,5 @@
-package com.hamdy.showtime.ui.ui.search.fragment.movie_search.repository
+package com.hamdy.showtime.ui.ui.search.fragment.person_search.repository
 
-import com.hamdy.showtime.ui.model.SearchMoviesResponse
 import com.hamdy.showtime.ui.model.SearchPersonResponse
 import com.hamdy.showtime.ui.network.MoviesService
 import com.hamdy.showtime.ui.network.RetrofitClient

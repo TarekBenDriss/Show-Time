@@ -14,7 +14,9 @@ import com.hamdy.showtime.R
 import com.hamdy.showtime.databinding.FavoriteItemBinding
 import com.hamdy.showtime.ui.model.ResultsItem
 import com.hamdy.showtime.ui.model.SearchResultsItem
+import com.hamdy.showtime.ui.util.ID_KEY
 import com.hamdy.showtime.ui.util.ImageUrlBase
+import com.hamdy.showtime.ui.util.POSTER_PATH_KEY
 
 class SearchPersonAdapter : RecyclerView.Adapter<SearchPersonAdapter.Holder>() {
     private var queries: List<ResultsItem?>? = null
@@ -51,8 +53,8 @@ class SearchPersonAdapter : RecyclerView.Adapter<SearchPersonAdapter.Holder>() {
 //                .addSharedElement(holder.moviesName, ViewCompat.getTransitionName(holder.moviesName)!!)
 //                .build()
             val bundle = Bundle()
-            bundle.putString("posterPath", query?.profilePath.toString())
-            bundle.putInt("id", query?.id!!)
+            bundle.putString(POSTER_PATH_KEY, query?.profilePath.toString())
+            bundle.putInt(ID_KEY, query?.id!!)
 //            bundle.putInt("position", position)
 //            bundle.putString("type", type)
             it.findNavController().navigate(action!!,bundle,null,null)

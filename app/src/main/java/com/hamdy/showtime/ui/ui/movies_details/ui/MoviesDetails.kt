@@ -25,13 +25,11 @@ import coil.load
 import com.hamdy.showtime.R
 import com.hamdy.showtime.databinding.FragmentMoviesDetailsBinding
 import com.hamdy.showtime.ui.ui.movies_details.adapter.CastAdapter
-import com.hamdy.showtime.ui.util.ImageUrlBase
 import androidx.core.os.bundleOf
 import androidx.core.view.marginBottom
 import com.flaviofaria.kenburnsview.RandomTransitionGenerator
 import com.hamdy.showtime.ui.ui.MainActivity
-
-import com.hamdy.showtime.ui.util.BackgroundTransitionGenerator
+import com.hamdy.showtime.ui.util.*
 
 
 class MoviesDetails : Fragment() {
@@ -71,8 +69,8 @@ class MoviesDetails : Fragment() {
 //        )
 
 
-        val posterPath = arguments?.get("posterPath").toString()
-        val id = arguments?.getInt("id")!!
+        val posterPath = arguments?.get(POSTER_PATH_KEY).toString()
+        val id = arguments?.getInt(ID_KEY)!!
 
 //        val position= arguments?.getInt("position")!!
 //        val type= arguments?.getString("type")!!
@@ -104,8 +102,8 @@ class MoviesDetails : Fragment() {
         }
         binding.favoriteIcon.setOnClickListener {
             val sharedPreferences: SharedPreferences =
-                context?.getSharedPreferences("ShowTimeAuth", Context.MODE_PRIVATE)!!
-            sharedIdValue = sharedPreferences.getBoolean("login", false)
+                context?.getSharedPreferences(SHARED_PREF_ID, Context.MODE_PRIVATE)!!
+            sharedIdValue = sharedPreferences.getBoolean(LOGIN_KEY, false)
             if (sharedIdValue) {
                 moviesDetailsViewModel.setFavorite(id, posterPath, favorite)
                 if (favorite)
@@ -116,7 +114,7 @@ class MoviesDetails : Fragment() {
             } else {
                 it.findNavController()
                     .navigate(R.id.action_moviesDetails_to_loginFragment, null, null, null)
-                Toast.makeText(context, "You Should Login", Toast.LENGTH_SHORT).show()
+                Toast.makeText(context, getString(R.string.favorite_should_be_logged_in), Toast.LENGTH_SHORT).show()
             }
         }
 

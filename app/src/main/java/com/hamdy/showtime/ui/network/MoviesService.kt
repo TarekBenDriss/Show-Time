@@ -8,32 +8,77 @@ import retrofit2.http.Query
 
 interface MoviesService {
 
-    @GET("movie/popular?")
-    suspend fun getPopular(@Query("api_key") key:String,@Query("page") page:Int): Response<PopularResponse>
+    @GET(POPULAR_MOVIES)
+    suspend fun getPopular(
+        @Query(API_KEY) key: String,
+        @Query(PAGE) page: Int
+    ): Response<PopularResponse>
 
-    @GET("movie/top_rated?")
-    suspend fun getTopRated(@Query("api_key") key:String,@Query("page") page:Int): Response<PopularResponse>
+    @GET(TOP_RATED_MOVIES)
+    suspend fun getTopRated(
+        @Query(API_KEY) key: String,
+        @Query(PAGE) page: Int
+    ): Response<PopularResponse>
 
-    @GET("movie/upcoming?")
-    suspend fun getUpComing(@Query("api_key") key:String,@Query("page") page:Int): Response<PopularResponse>
+    @GET(UPCOMING_MOVIES)
+    suspend fun getUpComing(
+        @Query(API_KEY) key: String,
+        @Query(PAGE) page: Int
+    ): Response<PopularResponse>
 
-    @GET("trending/movie/day?")
-    suspend fun getTrending(@Query("api_key") key:String,@Query("page") page:Int): Response<PopularResponse>
+    @GET(TRENDING_MOVIES)
+    suspend fun getTrending(
+        @Query(API_KEY) key: String,
+        @Query(PAGE) page: Int
+    ): Response<PopularResponse>
 
-    @GET("movie/{id}/credits?")
-    suspend fun getCastMovieList(@Path("id") page:Int,@Query("api_key") key:String): Response<CastResponse>
+    @GET(MOVIE_CAST)
+    suspend fun getCastMovieList(
+        @Path(ID) page: Int,
+        @Query(API_KEY) key: String
+    ): Response<CastResponse>
 
-    @GET("movie/{id}}/videos?")
-    suspend fun getTrailer(@Path("id") id:Int,@Query("api_key") key:String): Response<VideoResponse>
+    @GET(MOVIE_TRAILER)
+    suspend fun getTrailer(
+        @Path(ID) id: Int,
+        @Query(API_KEY) key: String
+    ): Response<VideoResponse>
 
-    @GET("movie/{id}?")
-    suspend fun getMoviesDetails(@Path("id") page:Int,@Query("api_key") key:String): Response<MoviesDetailsResponse>
+    @GET(MOVIE_DETAILS)
+    suspend fun getMoviesDetails(
+        @Path(ID) page: Int,
+        @Query(API_KEY) key: String
+    ): Response<MoviesDetailsResponse>
 
-    @GET("search/movie?")
-    suspend fun getMoviesSearch(@Query("api_key") key:String,@Query("query") query:String): Response<SearchMoviesResponse>
+    @GET(SEARCH_MOVIES)
+    suspend fun getMoviesSearch(
+        @Query(API_KEY) key: String,
+        @Query(QUERY) query: String
+    ): Response<SearchMoviesResponse>
 
-    @GET("search/person?")
-    suspend fun getPersonsSearch(@Query("api_key") key:String,@Query("query") query:String): Response<SearchPersonResponse>
+    @GET(SEARCH_PERSONS)
+    suspend fun getPersonsSearch(
+        @Query(API_KEY) key: String,
+        @Query(QUERY) query: String
+    ): Response<SearchPersonResponse>
 
+    companion object {
+        /** URIs **/
+        const val POPULAR_MOVIES = "movie/popular?"
+        const val TOP_RATED_MOVIES = "movie/top_rated?"
+        const val UPCOMING_MOVIES = "movie/upcoming?"
+        const val TRENDING_MOVIES = "trending/movie/day?"
+        const val MOVIE_CAST = "movie/{id}/credits?"
+        const val MOVIE_TRAILER = "movie/{id}/videos?"
+        const val MOVIE_DETAILS = "movie/{id}?"
+        const val SEARCH_MOVIES = "search/movie?"
+        const val SEARCH_PERSONS = "search/person?"
+
+        /** KEYS **/
+        const val API_KEY = "api_key"
+        const val QUERY = "query"
+        const val ID = "id"
+        const val PAGE = "page"
+    }
 
 }

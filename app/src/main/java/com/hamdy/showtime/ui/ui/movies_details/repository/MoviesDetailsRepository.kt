@@ -6,7 +6,7 @@ import com.google.firebase.firestore.FirebaseFirestore
 import com.hamdy.showtime.ui.model.*
 import com.hamdy.showtime.ui.network.MoviesService
 import com.hamdy.showtime.ui.network.RetrofitClient
-import com.hamdy.showtime.ui.util.API_KEY
+import com.hamdy.showtime.ui.util.*
 import kotlinx.coroutines.tasks.await
 
 class MoviesDetailsRepository {
@@ -28,8 +28,8 @@ class MoviesDetailsRepository {
 
     suspend fun getFavorite(id: Int): Boolean {
         val collectionReference =
-            db.collection("Users").document(auth.currentUser?.uid.toString())
-                .collection("FavoriteMovies").document(id.toString())
+            db.collection(USERS_KEY).document(auth.currentUser?.uid.toString())
+                .collection(FAVORITE_MOVIES_KEY).document(id.toString())
         val result = collectionReference.get().await()
         return result.exists()
     }
@@ -40,7 +40,7 @@ class MoviesDetailsRepository {
         var resultsVideoItem: ResultsVideoItem? = null
         if (client.body()?.results != null) {
             for (i in client.body()?.results!!) {
-                if (i?.type == "Trailer") {
+                if (i?.type == TRAILER_KEY) {
                     resultsVideoItem = i
                     break
                 } else {
@@ -55,16 +55,16 @@ class MoviesDetailsRepository {
     suspend fun setFavorite(id: Int, poster: String, exist: Boolean) {
         if (!exist) {
             val collectionReference =
-                db.collection("Users").document(auth.currentUser?.uid.toString())
-                    .collection("FavoriteMovies").document(id.toString())
+                db.collection(USERS_KEY).document(auth.currentUser?.uid.toString())
+                    .collection(FAVORITE_MOVIES_KEY).document(id.toString())
             val map = HashMap<String, String>()
-            map["poster"] = poster
-            map["favoriteId"] = id.toString()
+            map[POSTER_KEY] = poster
+            map[FAVORITE_ID_KEY] = id.toString()
             collectionReference.set(map).await()
         } else {
             val collectionReference =
-                db.collection("Users").document(auth.currentUser?.uid.toString())
-                    .collection("FavoriteMovies").document(id.toString())
+                db.collection(USERS_KEY).document(auth.currentUser?.uid.toString())
+                    .collection(FAVORITE_MOVIES_KEY).document(id.toString())
             collectionReference.delete().await()
         }
     }

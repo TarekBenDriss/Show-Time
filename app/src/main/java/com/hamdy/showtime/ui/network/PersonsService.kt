@@ -8,21 +8,35 @@ import retrofit2.http.Query
 
 interface PersonsService {
 
-    @GET("person/popular?")
-    suspend fun getPopular(@Query("api_key") key:String,@Query("page") page:Int): Response<PersonsResponse>
+    @GET(POPULAR_PERSONS)
+    suspend fun getPopular(@Query(API_KEY) key:String,@Query(PAGE) page:Int): Response<PersonsResponse>
 
-    @GET("person/{id}?")
-    suspend fun getPersonDetails(@Path("id") page:Int,@Query("api_key") key:String): Response<PersonDetailsResponse>
+    @GET(PERSON_DETAILS)
+    suspend fun getPersonDetails(@Path(ID) page:Int,@Query(API_KEY) key:String): Response<PersonDetailsResponse>
 
-    @GET("person/{id}/images?")
-    suspend fun getPersonImage(@Path("id") page:Int,@Query("api_key") key:String): Response<PersonImageResponse>
+    @GET(PERSON_IMAGE)
+    suspend fun getPersonImage(@Path(ID) page:Int,@Query(API_KEY) key:String): Response<PersonImageResponse>
 
-    @GET("find/{id}?")
-    suspend fun getPersonKnownMovies(@Path("id") page: String?, @Query("api_key") key:String,
-                                     @Query("external_source") external_source:String): Response<FindPersonResponse>
+    @GET(PERSON_KNOWN_MOVIES)
+    suspend fun getPersonKnownMovies(@Path(ID) page: String?, @Query(API_KEY) key:String,
+                                     @Query(EXTERNAL_SOURCE) external_source:String): Response<FindPersonResponse>
 
-    @GET("search/person?")
-    suspend fun getPersonsSearch(@Query("api_key") key:String,@Query("query") query:String): Response<SearchPersonResponse>
+    @GET(SEARCH_PERSON)
+    suspend fun getPersonsSearch(@Query(API_KEY) key:String,@Query(QUERY) query:String): Response<SearchPersonResponse>
 
+    companion object {
+        /** URIs **/
+        const val POPULAR_PERSONS = "person/popular?"
+        const val PERSON_DETAILS = "person/{id}?"
+        const val PERSON_IMAGE = "person/{id}/images?"
+        const val PERSON_KNOWN_MOVIES = "find/{id}?"
+        const val SEARCH_PERSON = "search/person?"
 
+        /** KEYS **/
+        const val API_KEY = "api_key"
+        const val QUERY = "query"
+        const val ID = "id"
+        const val PAGE = "page"
+        const val EXTERNAL_SOURCE = "external_source"
+    }
 }

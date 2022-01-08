@@ -79,7 +79,7 @@ class SearchMoviesFragment : Fragment() {
             if (it.second == 0 && firstOpen) {
                 val query = it.first
                 if (query.isEmpty())
-                    parent?.searchText?.error = "Query can't be empty"
+                    parent?.searchText?.error = getString(R.string.search_querry_empty)
                 else {
                     createDialog()
                     viewModel.getSearchMovies(query)

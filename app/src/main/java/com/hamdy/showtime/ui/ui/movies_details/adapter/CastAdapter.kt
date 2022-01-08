@@ -12,7 +12,9 @@ import coil.transform.CircleCropTransformation
 import com.hamdy.showtime.R
 import com.hamdy.showtime.databinding.CastItemBinding
 import com.hamdy.showtime.ui.model.CastItem
+import com.hamdy.showtime.ui.util.ID_KEY
 import com.hamdy.showtime.ui.util.ImageUrlBase
+import com.hamdy.showtime.ui.util.POSTER_PATH_KEY
 
 
 class CastAdapter : RecyclerView.Adapter<CastAdapter.Holder>() {
@@ -44,8 +46,8 @@ class CastAdapter : RecyclerView.Adapter<CastAdapter.Holder>() {
                 transformations(CircleCropTransformation())
             }
         holder.castContainer.setOnClickListener {
-            val bundle = bundleOf("id" to cast?.id)
-            bundle.putString("posterPath", cast?.profilePath)
+            val bundle = bundleOf(ID_KEY to cast?.id)
+            bundle.putString(POSTER_PATH_KEY, cast?.profilePath)
             it.findNavController()
                 .navigate(R.id.action_moviesDetails_to_navigation_person, bundle, null, null)
 
